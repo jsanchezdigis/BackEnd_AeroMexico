@@ -1,0 +1,30 @@
+VueloGetAll
+http://localhost:61384/api/Vuelo/GetAll
+
+PasajeroAdd
+http://localhost:61384/api/Pasajero/Add
+JSON
+{
+	"Nombre": "Jesus",
+	"ApellidoPaterno": "Martinez",
+	"ApellidoMaterno": "Herrera"
+}
+
+ReservacionAdd
+http://localhost:61384/api/Reservacion/Add
+JSON
+{
+	"Vuelo": {
+		"IdVuelo": 3
+	},
+	"Pasajero": {
+		"IdPasajero": 3
+	}
+}
+
+UsuarioGetByName
+http://localhost:61384/api/Usuario/GetByName
+JSON
+{
+	"UserName": "jsanchez"
+}
