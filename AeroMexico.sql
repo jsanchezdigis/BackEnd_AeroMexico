@@ -40,7 +40,7 @@ AS
 SELECT IdVuelo,NumeroVuelo,Origen,Destino,FechaSalida FROM Vuelo
 GO
 
-CREATE PROCEDURE ReservaionAdd
+CREATE PROCEDURE ReservacionAdd
 @IdVuelo INT,
 @IdPasajero INT
 AS
