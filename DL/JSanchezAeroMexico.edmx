@@ -77,6 +77,10 @@
           <Parameter Name="UserName" Type="varchar" Mode="In" />
         </Function>
         <Function Name="VueloGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="VueloGetByFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaInicio" Type="varchar" Mode="In" />
+          <Parameter Name="FechaFin" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="JSanchezAeroMexicoModelStoreContainer">
           <EntitySet Name="Pasajero" EntityType="Self.Pasajero" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reservacion" EntityType="Self.Reservacion" Schema="dbo" store:Type="Tables" />
@@ -184,6 +188,10 @@
             <Parameter Name="IdVuelo" Mode="In" Type="Int32" />
             <Parameter Name="IdPasajero" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="VueloGetByFecha" ReturnType="Collection(JSanchezAeroMexicoModel.VueloGetByFecha_Result)">
+            <Parameter Name="FechaInicio" Mode="In" Type="String" />
+            <Parameter Name="FechaFin" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="UsuarioGetByUserName_Result">
           <Property Type="Int32" Name="IdUsuario" Nullable="false" />
@@ -191,6 +199,13 @@
           <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="VueloGetAll_Result">
+          <Property Type="Int32" Name="IdVuelo" Nullable="false" />
+          <Property Type="String" Name="NumeroVuelo" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="Origen" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Destino" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="FechaSalida" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="VueloGetByFecha_Result">
           <Property Type="Int32" Name="IdVuelo" Nullable="false" />
           <Property Type="String" Name="NumeroVuelo" Nullable="true" MaxLength="4" />
           <Property Type="String" Name="Origen" Nullable="true" MaxLength="2" />
@@ -264,6 +279,17 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ReservacionAdd" FunctionName="JSanchezAeroMexicoModel.Store.ReservacionAdd" />
+          <FunctionImportMapping FunctionImportName="VueloGetByFecha" FunctionName="JSanchezAeroMexicoModel.Store.VueloGetByFecha">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="JSanchezAeroMexicoModel.VueloGetByFecha_Result">
+                <ScalarProperty Name="IdVuelo" ColumnName="IdVuelo" />
+                <ScalarProperty Name="NumeroVuelo" ColumnName="NumeroVuelo" />
+                <ScalarProperty Name="Origen" ColumnName="Origen" />
+                <ScalarProperty Name="Destino" ColumnName="Destino" />
+                <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

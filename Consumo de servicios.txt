@@ -1,6 +1,9 @@
 VueloGetAll
 http://localhost:61384/api/Vuelo/GetAll
 
+VueloGetByFecha
+http://localhost:61384/api/Vuelo/GetByFecha/FechaInicio,FechaFin?FechaInicio=2023-04-01 00:00:00&FechaFin=2023-05-01 00:00:00
+
 PasajeroAdd
 http://localhost:61384/api/Pasajero/Add
 JSON

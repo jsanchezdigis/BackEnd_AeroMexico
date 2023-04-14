@@ -13,6 +13,8 @@ namespace ML
         public string Origen { get; set; }
         public string Destino { get; set; }
         public string FechaSalida { get; set; }
+        public string FechaInicio { get; set; }
+        public string FechaFin { get; set; }
         public List<object> Vuelos { get; set; }
     }
 }

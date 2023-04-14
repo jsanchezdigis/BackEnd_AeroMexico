@@ -45,5 +45,42 @@ namespace BL
             return result;
         }
 
+        public static ML.Result GetByFecha(ML.Vuelo vuelo)
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+                using (DL.JSanchezAeroMexicoEntities context = new DL.JSanchezAeroMexicoEntities())
+                {
+                    var query = context.VueloGetByFecha(vuelo.FechaInicio, vuelo.FechaFin).ToList();
+
+                    if (query != null)
+                    {
+                        result.Objects = new List<object>();
+                        foreach (var obj in query)
+                        {
+                            vuelo = new ML.Vuelo();
+
+                            vuelo.IdVuelo = obj.IdVuelo;
+                            vuelo.NumeroVuelo = obj.NumeroVuelo;
+                            vuelo.Origen = obj.Origen;
+                            vuelo.Destino = obj.Destino;
+                            vuelo.FechaSalida = obj.FechaSalida.ToString();
+
+                            result.Objects.Add(vuelo);
+                        }
+                    }
+                    result.Correct = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Correct = false;
+                result.ErrorMessage = ex.Message;
+            }
+            return result;
+        }
+
     }
 }

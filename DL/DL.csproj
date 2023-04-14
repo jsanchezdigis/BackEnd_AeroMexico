@@ -88,6 +88,9 @@
     <Compile Include="VueloGetAll_Result.cs">
       <DependentUpon>JSanchezAeroMexico.tt</DependentUpon>
     </Compile>
+    <Compile Include="VueloGetByFecha_Result.cs">
+      <DependentUpon>JSanchezAeroMexico.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="JSanchezAeroMexico.edmx">

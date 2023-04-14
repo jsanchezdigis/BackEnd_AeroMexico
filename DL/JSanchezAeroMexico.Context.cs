@@ -75,5 +75,18 @@ namespace DL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ReservacionAdd", idVueloParameter, idPasajeroParameter);
         }
+    
+        public virtual ObjectResult<VueloGetByFecha_Result> VueloGetByFecha(string fechaInicio, string fechaFin)
+        {
+            var fechaInicioParameter = fechaInicio != null ?
+                new ObjectParameter("FechaInicio", fechaInicio) :
+                new ObjectParameter("FechaInicio", typeof(string));
+    
+            var fechaFinParameter = fechaFin != null ?
+                new ObjectParameter("FechaFin", fechaFin) :
+                new ObjectParameter("FechaFin", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VueloGetByFecha_Result>("VueloGetByFecha", fechaInicioParameter, fechaFinParameter);
+        }
     }
 }
