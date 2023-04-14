@@ -40,6 +40,14 @@ AS
 SELECT IdVuelo,NumeroVuelo,Origen,Destino,FechaSalida FROM Vuelo
 GO
 
+CREATE PROCEDURE VueloGetByFecha --'2023-04-01 00:00:00','2023-05-01 00:00:00'
+@FechaInicio VARCHAR(50),
+@FechaFin VARCHAR(50)
+AS
+SELECT IdVuelo,NumeroVuelo,Origen,Destino,FechaSalida FROM Vuelo
+WHERE FechaSalida BETWEEN @FechaInicio AND @FechaFin
+GO
+
 CREATE PROCEDURE ReservacionAdd
 @IdVuelo INT,
 @IdPasajero INT
